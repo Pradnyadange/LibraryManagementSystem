@@ -1,0 +1,17 @@
+﻿build/
+build-*/
+*.autosave
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+.qtc_clangd/
+.qtcreator/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.exe
+*.dll
+*.obj
+*.o
+Thumbs.db
+.DS_Store
