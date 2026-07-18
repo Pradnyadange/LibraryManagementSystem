@@ -57,8 +57,7 @@ LibraryManagementSystem/
 ├── mainwindow.h
 ├── mainwindow.cpp
 ├── mainwindow.ui
-└── schema/
-    └── full_setup.sql
+└── schema.sql
 ```
 
 ## Known Limitations
