@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QAbstractItemView>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QSqlError>
@@ -229,7 +229,6 @@ void MainWindow::loadBorrowTab()
     borrowModel->setTable("BorrowedBooks");
     borrowModel->select();
 
-    // 0=borrow_id, 1=book_id, 2=member_id, 3=borrow_date, 4=due_date, 5=return_date
     borrowModel->setHeaderData(0, Qt::Horizontal, "Borrow ID");
     borrowModel->setHeaderData(1, Qt::Horizontal, "Book ID");
     borrowModel->setHeaderData(2, Qt::Horizontal, "Member ID");
@@ -238,9 +237,13 @@ void MainWindow::loadBorrowTab()
     borrowModel->setHeaderData(5, Qt::Horizontal, "Returned On");
 
     ui->borrowTableView->setModel(borrowModel);
+
+    ui->borrowTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->borrowTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->borrowTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
     ui->borrowTableView->resizeColumnsToContents();
 }
-
 void MainWindow::on_btnBorrow_clicked()
 {
     if (ui->comboMember->currentIndex() < 0 || ui->comboBook->currentIndex() < 0) {
